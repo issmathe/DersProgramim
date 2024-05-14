@@ -5,6 +5,7 @@ import Deneme from "./pages/deneme/Deneme.jsx";
 import Hakkimizda from "./pages/hakkimizda/Hakkimizda.jsx";
 import Register from "./pages/auth/Register.jsx";
 import Login from "./pages/auth/Login.jsx";
+import KayitEkleme from "./pages/kayitEkleme/KayitEkleme.jsx";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path="/deneme" element={<Deneme/>} />
       <Route path="/hakkimizda" element={<Hakkimizda/>} />
       <Route path="/register" element={<Register/>} />
+      <Route path="/kayit" element={<KayitEkleme/>} />
       <Route path="/login" element={<Login/>} />
       </Routes>
   );

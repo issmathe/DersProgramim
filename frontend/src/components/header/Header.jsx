@@ -13,7 +13,7 @@ const Header = () => {
     <header className="flex items-center justify-between w-full h-16 bg-gray-800 px-8">
       <div className="h-16 w-16"></div>
       <nav>
-        <ul className="flex gap-8">
+        <ul className="flex gap-4">
           <li>
             <Link to="/" className="text-white">
               ANASAYFA
@@ -32,6 +32,11 @@ const Header = () => {
           <li>
             <Link to="/iletisim" className="text-white">
               İLETİŞİM
+            </Link>
+          </li>
+          <li>
+          <Link to="/kayit" className="text-white">
+              Kayıt Ekleme
             </Link>
           </li>
         </ul>
