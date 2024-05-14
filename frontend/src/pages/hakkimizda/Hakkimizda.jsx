@@ -112,7 +112,7 @@ const Hakkimizda = () => {
         </form>
         <ul className="">
           {data
-            .filter((item) => item.id ) // Sadece giriş yapan kullanıcının ID'sine sahip verileri filtrele
+            .filter((item) => item.id === loggedInUserId) // Sadece giriş yapan kullanıcının ID'sine sahip verileri filtrele
             .map((item, index) => (
               <li
                 key={index}
