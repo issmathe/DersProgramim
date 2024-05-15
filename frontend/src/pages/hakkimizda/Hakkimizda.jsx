@@ -39,16 +39,14 @@ const Hakkimizda = () => {
 
   const fetchData = async () => {
     try {
-      // Sunucudan veri çekmeden önce 1 saniye bekleyelim
-      await new Promise(resolve => setTimeout(resolve, 1000));
-  
-      const response = await axios.get(process.env.REACT_APP_SERVER_URL + "/api");
+      const response = await axios.get(
+        process.env.REACT_APP_SERVER_URL + "/api"
+      );
       setData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
