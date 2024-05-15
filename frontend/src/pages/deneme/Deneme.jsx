@@ -89,7 +89,7 @@ const Deneme = () => {
         <div className="bg-slate-200 p-8 rounded-lg">
           <div className="max-w-screen-md mx-auto">
             <h1 className="bg-blue-400 text-center rounded-sm h-10 p-2">
-              YGS NETLERİM
+              YGS NETLERİ
             </h1>
             <div className="rounded-lg shadow-xl p-4 mt-4">
               <table className="table-auto border-collapse border w-full border-gray-800">
