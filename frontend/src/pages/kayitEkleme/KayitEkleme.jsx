@@ -35,13 +35,14 @@ const KayitEkleme = () => {
       <Header />
       <h2>Kullanıcılar</h2>
       <ul>
-        {users.map(user => (
-          <li key={user.idDegeri}>
-            Adı: {user.username}  ID: {user._id}
-            {loggedInUserId === user._id && <span> (Giriş yapan kullanıcı)</span>}
-          </li>
-        ))}
-      </ul>
+  {users.map((user, index) => (
+    <li key={index}>
+      Adı: {user.username}  ID: {user._id}
+      {loggedInUserId === user._id && <span> (Giriş yapan kullanıcı)</span>}
+    </li>
+  ))}
+</ul>
+
     </div>
   );
 };
