@@ -9,15 +9,16 @@ const Login = () => {
 
   const onFinish = async (values) => {
     setLoading(true);
+    console.log("Form values: ", values);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch("http://localhost:5000/api/auth/login", { // IP adresini kendi IP'nizle değiştirin
         method: "POST",
         body: JSON.stringify(values),
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
-
       const user = await res.json();
-
+      console.log("API response: ", user);
+  
       if (res.status === 200) {
         localStorage.setItem(
           "posUser",
@@ -40,6 +41,8 @@ const Login = () => {
       setLoading(false);
     }
   };
+  
+  
 
   return (
     <div className="h-screen">
