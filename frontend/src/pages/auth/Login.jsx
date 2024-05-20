@@ -9,40 +9,45 @@ const Login = () => {
 
   const onFinish = async (values) => {
     setLoading(true);
-    console.log("Form values: ", values);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", { // IP adresini kendi IP'nizle değiştirin
+      const res = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
         body: JSON.stringify(values),
-        headers: { "Content-type": "application/json; charset=UTF-8" },
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
-      const user = await res.json();
-      console.log("API response: ", user);
-  
-      if (res.status === 200) {
-        localStorage.setItem(
-          "posUser",
-          JSON.stringify({
-            username: user.username,
-            email: user.email,
-          })
-        );
-        message.success("Giriş işlemi başarılı.");
-        navigate("/");
-      } else if (res.status === 404) {
-        message.error("Kullanıcı bulunamadı!");
-      } else if (res.status === 403) {
-        message.error("Şifre yanlış!");
+
+      if (!res.ok) {
+        if (res.status === 404) {
+          message.error("Kullanıcı bulunamadı!");
+        } else if (res.status === 403) {
+          message.error("Şifre yanlış!");
+        } else {
+          message.error("Bir şeyler yanlış gitti.");
+        }
+        setLoading(false);
+        return;
       }
+
+      const user = await res.json();
+
+      localStorage.setItem(
+        "posUser",
+        JSON.stringify({
+          username: user.username,
+          email: user.email,
+        })
+      );
+      message.success("Giriş işlemi başarılı.");
+      navigate("/");
       setLoading(false);
     } catch (error) {
-      message.error("Bir şeyler yanlış gitti.");
-      console.log(error);
+      message.error("Sunucuya bağlanılamadı.");
+      console.error("Fetch error: ", error);
       setLoading(false);
     }
   };
-  
-  
 
   return (
     <div className="h-screen">

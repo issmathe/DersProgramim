@@ -21,7 +21,7 @@ const Hakkimizda = () => {
   // Giriş yapan kullanıcının kimliğini almak için fonksiyon
   const fetchLoggedInUserId = async (loggedInUser) => {
     try {
-      const response = await fetch("http://localhost:5000/api/users/get-all");
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/get-all`);
       const data = await response.json();
       const foundUser = data.find(
         (u) =>
