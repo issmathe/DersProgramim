@@ -12,10 +12,7 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({
-  origin: ['http://localhost:3000', 'https://dersprogramim-1.onrender.com/'],
-  credentials: true,
-}));
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json({ limit: "30mb" }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));

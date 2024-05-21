@@ -10,41 +10,33 @@ const Login = () => {
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(process.env.REACT_APP_SERVER_URL + "/api/auth/login", {
         method: "POST",
         body: JSON.stringify(values),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-type": "application/json; charset=UTF-8" },
       });
-
-      if (!res.ok) {
-        if (res.status === 404) {
-          message.error("Kullanıcı bulunamadı!");
-        } else if (res.status === 403) {
-          message.error("Şifre yanlış!");
-        } else {
-          message.error("Bir şeyler yanlış gitti.");
-        }
-        setLoading(false);
-        return;
-      }
 
       const user = await res.json();
 
-      localStorage.setItem(
-        "posUser",
-        JSON.stringify({
-          username: user.username,
-          email: user.email,
-        })
-      );
-      message.success("Giriş işlemi başarılı.");
-      navigate("/");
+      if (res.status === 200) {
+        localStorage.setItem(
+          "posUser",
+          JSON.stringify({
+            username: user.username,
+            email: user.email,
+          })
+        );
+        message.success("Giriş işlemi başarılı.");
+        navigate("/");
+      } else if (res.status === 404) {
+        message.error("Kullanıcı bulunamadı!");
+      } else if (res.status === 403) {
+        message.error("Şifre yanlış!");
+      }
       setLoading(false);
     } catch (error) {
-      message.error("Sunucuya bağlanılamadı.");
-      console.error("Fetch error: ", error);
+      message.error("Bir şeyler yanlış gitti.");
+      console.log(error);
       setLoading(false);
     }
   };
