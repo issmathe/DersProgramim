@@ -8,7 +8,7 @@ const KayitEkleme = () => {
 
   useEffect(() => {
     // Tüm kullanıcıları almak için API'ye istek yap
-    axios.get('http://localhost:5000/api/users/get-all')
+    axios.get(process.env.REACT_APP_SERVER_URL +'/api/users/get-all')
       .then(response => {
         setUsers(response.data);
       })
@@ -20,7 +20,7 @@ const KayitEkleme = () => {
     const loggedInUserJWT = localStorage.getItem('userJWT'); // Örnek: localStorage'da kullanıcının JWT'sini saklamışsınız
     if (loggedInUserJWT) {
       // Kullanıcı JWT'sini kullanarak, giriş yapan kullanıcının ID'sini belirleyin
-      axios.post('http://localhost:5000/api/users/get-user-id', { jwt: loggedInUserJWT })
+      axios.post(process.env.REACT_APP_SERVER_URL +'/api/users/get-user-id', { jwt: loggedInUserJWT })
         .then(response => {
           setLoggedInUserId(response.data.userId);
         })

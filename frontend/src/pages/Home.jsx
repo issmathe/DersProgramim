@@ -20,7 +20,7 @@ const Home = () => {
   }, [navigate]);
 
   const fetchUserData = (loggedInUser) => {
-    fetch('http://localhost:5000/api/users/get-all')
+    fetch(process.env.REACT_APP_SERVER_URL + "/api/users/get-all")
       .then(response => response.json())
       .then(data => {
         const foundUser = data.find(u => u.username === JSON.parse(loggedInUser).username
