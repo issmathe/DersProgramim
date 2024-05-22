@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   return (
-    <header className="flex items-center justify-between w-full h-16 bg-gray-800 px-8">
+    <header className="flex items-center justify-between w-full h-24 bg-gray-800 px-8">
       <div className="h-16 w-16"></div>
       <nav>
         <ul className="flex gap-4 text-sm md:text-base">
@@ -43,10 +43,10 @@ const Header = () => {
       </nav>
       <div className="flex gap-4">
         <button
-          className="px-4 py-2 rounded-md bg-blue-500 text-white text-sm md:text-base"
+          className="ml-3 px-2  rounded-md bg-blue-500 text-white text-sm md:text-base"
           onClick={handleLogout}
         >
-          Çıkış
+          ÇIKIŞ
         </button>
       </div>
     </header>
